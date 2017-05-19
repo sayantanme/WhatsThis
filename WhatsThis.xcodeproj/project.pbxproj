@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */; };
+		39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */; };
 		399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744AF1EC453A0006BF20A /* AppDelegate.swift */; };
 		399744B21EC453A0006BF20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744B11EC453A0006BF20A /* ViewController.swift */; };
 		399744B51EC453A0006BF20A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399744B31EC453A0006BF20A /* Main.storyboard */; };
@@ -15,6 +17,14 @@
 		399744BD1EC453A0006BF20A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399744BB1EC453A0006BF20A /* LaunchScreen.storyboard */; };
 		399744C81EC453A0006BF20A /* WhatsThisTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744C71EC453A0006BF20A /* WhatsThisTests.swift */; };
 		399744D31EC453A0006BF20A /* WhatsThisUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744D21EC453A0006BF20A /* WhatsThisUITests.swift */; };
+		399744E21EC46918006BF20A /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E11EC46918006BF20A /* VisualRecognitionV3.framework */; };
+		399744E31EC46A12006BF20A /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E11EC46918006BF20A /* VisualRecognitionV3.framework */; };
+		399744E41EC46A12006BF20A /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E11EC46918006BF20A /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		399744E71EC46E23006BF20A /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; };
+		399744E81EC46E3F006BF20A /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; };
+		399744E91EC46E3F006BF20A /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39F343291ECE33A900209B0C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F343281ECE33A900209B0C /* Extensions.swift */; };
+		39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +44,24 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		399744E51EC46A12006BF20A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				399744E41EC46A12006BF20A /* VisualRecognitionV3.framework in Embed Frameworks */,
+				399744E91EC46E3F006BF20A /* RestKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewCVC.swift; sourceTree = "<group>"; };
+		39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallertImageCell.swift; sourceTree = "<group>"; };
 		399744AC1EC453A0006BF20A /* WhatsThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399744AF1EC453A0006BF20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399744B11EC453A0006BF20A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -49,6 +76,10 @@
 		399744CE1EC453A0006BF20A /* WhatsThisUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WhatsThisUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		399744D21EC453A0006BF20A /* WhatsThisUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatsThisUITests.swift; sourceTree = "<group>"; };
 		399744D41EC453A0006BF20A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		399744E11EC46918006BF20A /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
+		399744E61EC46E23006BF20A /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		39F343281ECE33A900209B0C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingImagesVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +87,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				399744E71EC46E23006BF20A /* RestKit.framework in Frameworks */,
+				399744E21EC46918006BF20A /* VisualRecognitionV3.framework in Frameworks */,
+				399744E31EC46A12006BF20A /* VisualRecognitionV3.framework in Frameworks */,
+				399744E81EC46E3F006BF20A /* RestKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +118,7 @@
 				399744C61EC453A0006BF20A /* WhatsThisTests */,
 				399744D11EC453A0006BF20A /* WhatsThisUITests */,
 				399744AD1EC453A0006BF20A /* Products */,
+				399744E01EC46918006BF20A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,13 +135,15 @@
 		399744AE1EC453A0006BF20A /* WhatsThis */ = {
 			isa = PBXGroup;
 			children = (
+				39F3432C1ECE340400209B0C /* Models */,
+				39F3432B1ECE33DF00209B0C /* Views */,
+				39F3432A1ECE33C100209B0C /* ViewControllers */,
+				39F343271ECE335B00209B0C /* Helpers */,
 				399744AF1EC453A0006BF20A /* AppDelegate.swift */,
-				399744B11EC453A0006BF20A /* ViewController.swift */,
 				399744B31EC453A0006BF20A /* Main.storyboard */,
 				399744B91EC453A0006BF20A /* Assets.xcassets */,
 				399744BB1EC453A0006BF20A /* LaunchScreen.storyboard */,
 				399744BE1EC453A0006BF20A /* Info.plist */,
-				399744B61EC453A0006BF20A /* WhatsThis.xcdatamodeld */,
 			);
 			path = WhatsThis;
 			sourceTree = "<group>";
@@ -128,6 +166,49 @@
 			path = WhatsThisUITests;
 			sourceTree = "<group>";
 		};
+		399744E01EC46918006BF20A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				399744E61EC46E23006BF20A /* RestKit.framework */,
+				399744E11EC46918006BF20A /* VisualRecognitionV3.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39F343271ECE335B00209B0C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				39F343281ECE33A900209B0C /* Extensions.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		39F3432A1ECE33C100209B0C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				399744B11EC453A0006BF20A /* ViewController.swift */,
+				39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */,
+				39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		39F3432B1ECE33DF00209B0C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		39F3432C1ECE340400209B0C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				399744B61EC453A0006BF20A /* WhatsThis.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +219,7 @@
 				399744A81EC453A0006BF20A /* Sources */,
 				399744A91EC453A0006BF20A /* Frameworks */,
 				399744AA1EC453A0006BF20A /* Resources */,
+				399744E51EC46A12006BF20A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -265,8 +347,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */,
+				39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */,
+				39F343291ECE33A900209B0C /* Extensions.swift in Sources */,
 				399744B21EC453A0006BF20A /* ViewController.swift in Sources */,
 				399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */,
+				39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */,
 				399744B81EC453A0006BF20A /* WhatsThis.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -422,6 +508,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YT5L554J64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WhatsThis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sayantanchakraborty.WhatsThis;
@@ -435,6 +525,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = YT5L554J64;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = WhatsThis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sayantanchakraborty.WhatsThis;
@@ -520,6 +614,7 @@
 				399744D91EC453A0006BF20A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		399744DA1EC453A0006BF20A /* Build configuration list for PBXNativeTarget "WhatsThisTests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +623,7 @@
 				399744DC1EC453A0006BF20A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		399744DD1EC453A0006BF20A /* Build configuration list for PBXNativeTarget "WhatsThisUITests" */ = {
 			isa = XCConfigurationList;
@@ -536,6 +632,7 @@
 				399744DF1EC453A0006BF20A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
