@@ -11,7 +11,7 @@ import Photos
 
 private let reuseIdentifier = "Cell"
 
-class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayout {
+class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayout,ModalViewControllerDelegate {
 
     var assetCollection: PHAssetCollection?
     var fetchResult: PHFetchResult<PHAsset>?
@@ -91,6 +91,7 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
         // Pass the selected object to the new view controller.
         if segue.destination is TrainingImagesVC {
             let dest = segue.destination as! TrainingImagesVC
+            dest.modalVCDelegate = self
             dest.imageAssets = selectedImageAssets
         }
     }
@@ -150,6 +151,11 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
             selectedImageAssets.append(asset!)
         }
         self.navigationItem.title = "Selected items \(selectedImageIdentifiers.count)"
+    }
+    
+    // MARK: ModalViewControllerDelegate
+    func returnValue(value: String) {
+        print(value)
     }
     
 }

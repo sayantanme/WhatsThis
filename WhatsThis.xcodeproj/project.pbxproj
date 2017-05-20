@@ -23,8 +23,12 @@
 		399744E71EC46E23006BF20A /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; };
 		399744E81EC46E3F006BF20A /* RestKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; };
 		399744E91EC46E3F006BF20A /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 399744E61EC46E23006BF20A /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39E2597A1ED0A1CC0094AA14 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39E259791ED0A1CC0094AA14 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		39E2597B1ED0A1F90094AA14 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39E259791ED0A1CC0094AA14 /* Zip.framework */; };
+		39E2597E1ED0D3870094AA14 /* ModalViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2597D1ED0D3870094AA14 /* ModalViewControllerDelegate.swift */; };
 		39F343291ECE33A900209B0C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F343281ECE33A900209B0C /* Extensions.swift */; };
 		39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */; };
+		39F343301ECECD4100209B0C /* TrainingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +55,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				39E2597A1ED0A1CC0094AA14 /* Zip.framework in Embed Frameworks */,
 				399744E41EC46A12006BF20A /* VisualRecognitionV3.framework in Embed Frameworks */,
 				399744E91EC46E3F006BF20A /* RestKit.framework in Embed Frameworks */,
 			);
@@ -78,8 +83,11 @@
 		399744D41EC453A0006BF20A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		399744E11EC46918006BF20A /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		399744E61EC46E23006BF20A /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
+		39E259791ED0A1CC0094AA14 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
+		39E2597D1ED0D3870094AA14 /* ModalViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewControllerDelegate.swift; sourceTree = "<group>"; };
 		39F343281ECE33A900209B0C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingImagesVC.swift; sourceTree = "<group>"; };
+		39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +95,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39E2597B1ED0A1F90094AA14 /* Zip.framework in Frameworks */,
 				399744E71EC46E23006BF20A /* RestKit.framework in Frameworks */,
 				399744E21EC46918006BF20A /* VisualRecognitionV3.framework in Frameworks */,
 				399744E31EC46A12006BF20A /* VisualRecognitionV3.framework in Frameworks */,
@@ -135,6 +144,7 @@
 		399744AE1EC453A0006BF20A /* WhatsThis */ = {
 			isa = PBXGroup;
 			children = (
+				39E2597C1ED0D3600094AA14 /* Protocols */,
 				39F3432C1ECE340400209B0C /* Models */,
 				39F3432B1ECE33DF00209B0C /* Views */,
 				39F3432A1ECE33C100209B0C /* ViewControllers */,
@@ -169,10 +179,19 @@
 		399744E01EC46918006BF20A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				39E259791ED0A1CC0094AA14 /* Zip.framework */,
 				399744E61EC46E23006BF20A /* RestKit.framework */,
 				399744E11EC46918006BF20A /* VisualRecognitionV3.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		39E2597C1ED0D3600094AA14 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				39E2597D1ED0D3870094AA14 /* ModalViewControllerDelegate.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		39F343271ECE335B00209B0C /* Helpers */ = {
@@ -197,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */,
+				39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -347,6 +367,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				39F343301ECECD4100209B0C /* TrainingViewCell.swift in Sources */,
 				39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */,
 				39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */,
 				39F343291ECE33A900209B0C /* Extensions.swift in Sources */,
@@ -354,6 +375,7 @@
 				399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */,
 				39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */,
 				399744B81EC453A0006BF20A /* WhatsThis.xcdatamodeld in Sources */,
+				39E2597E1ED0D3870094AA14 /* ModalViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
