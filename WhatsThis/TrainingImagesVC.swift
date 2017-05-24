@@ -32,6 +32,8 @@ class TrainingImagesVC: UIViewController,UICollectionViewDataSource,UICollection
     fileprivate var saveImagesPath: URL? = nil
     var indicator: UIActivityIndicatorView?
     var modalVCDelegate:ModalViewControllerDelegate!
+    var inPositiveSelectionMode = false
+    var trainingName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +74,7 @@ class TrainingImagesVC: UIViewController,UICollectionViewDataSource,UICollection
         let asset = imageAssets[0]
         print("Width:\(asset.pixelWidth), Height:\(asset.pixelHeight)")
         let sizeToFit = CGSize(width: asset.pixelWidth, height: asset.pixelHeight)
-        imageManager.requestImage(for: asset, targetSize: sizeToFit, contentMode: .aspectFill, options: nil,resultHandler:  { image, _ in
+        imageManager.requestImage(for: asset, targetSize: sizeToFit, contentMode: .aspectFit, options: nil,resultHandler:  { image, _ in
             self.previewImg = image
         })
     }
@@ -84,7 +86,7 @@ class TrainingImagesVC: UIViewController,UICollectionViewDataSource,UICollection
             self.createZipFile()
             DispatchQueue.main.async {
                 self.indicator?.stopAnimating()
-                self.modalVCDelegate.returnValue(value: "After positive examples set")
+                self.modalVCDelegate.returnValue(value: "After positive examples set", imageAssets: self.imageAssets,zipPath: self.saveImagesPath!, selectionMode: self.inPositiveSelectionMode)
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -97,11 +99,24 @@ class TrainingImagesVC: UIViewController,UICollectionViewDataSource,UICollection
     
     func createDirectory() {
         let documentsDir = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-        saveImagesPath = documentsDir.appendingPathComponent("PositiveExamples")
+        if inPositiveSelectionMode {
+            saveImagesPath = documentsDir.appendingPathComponent("\(trainingName!)_PositiveExamples")
+        }else{
+            saveImagesPath = documentsDir.appendingPathComponent("\(trainingName!)_NegativeExamples")
+
+        }
         print(saveImagesPath?.absoluteString ?? "")
         
         do {
-            if !FileManager.default.fileExists(atPath: (saveImagesPath?.absoluteString)!) {
+            var isDirectory: ObjCBool = ObjCBool(true)
+            var path = saveImagesPath?.absoluteString
+            let index = path?.index((path?.startIndex)!, offsetBy:6)
+            path = path?.substring(from: index!)
+            
+            if FileManager.default.fileExists(atPath: path!, isDirectory: &isDirectory) {
+                try FileManager.default.removeItem(at: saveImagesPath!)
+                try FileManager.default.createDirectory(at: saveImagesPath!, withIntermediateDirectories: true, attributes: nil)
+            }else {
                 try FileManager.default.createDirectory(at: saveImagesPath!, withIntermediateDirectories: true, attributes: nil)
             }
         }catch let error as NSError {
@@ -127,8 +142,15 @@ class TrainingImagesVC: UIViewController,UICollectionViewDataSource,UICollection
     
     func createZipFile(){
         do {
-            let zipPath = try Zip.quickZipFiles([saveImagesPath!], fileName: "PositiveExamples")
-            print(zipPath.absoluteString)
+            if inPositiveSelectionMode {
+                let zipPath = try Zip.quickZipFiles([saveImagesPath!], fileName: "\(trainingName!)_PositiveExamples")
+                print(zipPath.absoluteString)
+
+            }else{
+                let zipPath = try Zip.quickZipFiles([saveImagesPath!], fileName: "\(trainingName!)_NegativeExamples")
+                print(zipPath.absoluteString)
+
+            }
         }catch let error as NSError {
             print("Error:\(error.localizedDescription)")
         }

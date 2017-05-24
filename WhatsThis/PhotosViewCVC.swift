@@ -8,6 +8,7 @@
 
 import UIKit
 import Photos
+import CoreData
 
 private let reuseIdentifier = "Cell"
 
@@ -19,6 +20,10 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
     fileprivate let imageManager = PHCachingImageManager()
     fileprivate var selectedImageIdentifiers = [String]()
     var selectedImageAssets = [PHAsset]()
+    var selectedPositiveAssetsIdentifier = [String]()
+    var inPositiveSelectionMode = true
+    var trainingName: String?
+    var fileNameDict = Dictionary<String, URL>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +97,8 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
         if segue.destination is TrainingImagesVC {
             let dest = segue.destination as! TrainingImagesVC
             dest.modalVCDelegate = self
+            dest.trainingName = trainingName
+            dest.inPositiveSelectionMode = inPositiveSelectionMode
             dest.imageAssets = selectedImageAssets
         }
     }
@@ -121,6 +128,17 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
             // set the cell's thumbnail image only if it's still showing the same asset.
             if cell.representedAssetIdentifier == asset?.localIdentifier {
                 cell.thumbnailImage = image
+                if(self.selectedPositiveAssetsIdentifier.contains(cell.representedAssetIdentifier!)){
+                    cell.galleryImage.addBlur()
+                    
+                    if let index = self.selectedImageIdentifiers.index(of: (asset?.localIdentifier)!){
+                        self.selectedImageIdentifiers.remove(at: index)
+                    }
+                    if let index = self.selectedImageAssets.index(of: (asset)!){
+                        self.selectedImageAssets.remove(at: index)
+                    }
+                    cell.imageSelected.isHidden = true
+                }
             }
         })
         if selectedImageIdentifiers.contains(cell.representedAssetIdentifier!) {
@@ -154,8 +172,50 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
     }
     
     // MARK: ModalViewControllerDelegate
-    func returnValue(value: String) {
-        print(value)
+    func returnValue(value: String, imageAssets: [PHAsset], zipPath: URL, selectionMode: Bool) {
+        //selectedPositiveAssets = imageAssets
+        if selectionMode{
+            fileNameDict["positivePath"] = zipPath
+        }else{
+            fileNameDict["negativePath"] = zipPath
+        }
+        if fileNameDict.count == 2 {
+            saveData()
+        }
+        self.navigationItem.title = "Select Negative Examples"
+        inPositiveSelectionMode = false
+        
+        for asset in imageAssets {
+            selectedPositiveAssetsIdentifier.append(asset.localIdentifier)
+        }
+        
+        if fileNameDict.count == 2 {
+            self.navigationController?.popViewController(animated: true)
+        }else{
+            self.collectionView?.reloadData()
+        }
+    }
+    
+    //MARK: CoreData
+    fileprivate func saveData(){
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
+            return
+        }
+        let managedContext =
+            appDelegate.persistentContainer.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Training_Data", in: managedContext)
+        let tainData = NSManagedObject(entity: entity!, insertInto: managedContext)
+        tainData.setValue(trainingName, forKey: "name")
+        tainData.setValue(fileNameDict["positivePath"]?.absoluteString, forKey: "positivePath")
+        tainData.setValue(fileNameDict["negativePath"]?.absoluteString, forKey: "negativePath")
+        tainData.setValue(false, forKey: "isTrained")
+        
+        do {
+            try managedContext.save()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
     }
     
 }

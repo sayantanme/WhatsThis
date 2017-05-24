@@ -11,7 +11,7 @@ import UIKit
 
 extension UIImageView {
     func addBlur(){
-        let blurEffect = UIBlurEffect(style: .extraLight)
+        let blurEffect = UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = self.bounds
         

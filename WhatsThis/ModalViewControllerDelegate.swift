@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import Photos
 
 protocol ModalViewControllerDelegate {
-    func returnValue( value: String)
+    func returnValue( value: String,imageAssets:[PHAsset], zipPath:URL, selectionMode:Bool)
 }

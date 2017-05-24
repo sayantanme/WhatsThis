@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */; };
 		39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */; };
+		396A24141ED54A240077671B /* TrainedImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396A24131ED54A240077671B /* TrainedImagesCell.swift */; };
 		399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744AF1EC453A0006BF20A /* AppDelegate.swift */; };
 		399744B21EC453A0006BF20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744B11EC453A0006BF20A /* ViewController.swift */; };
 		399744B51EC453A0006BF20A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399744B31EC453A0006BF20A /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		39E2597A1ED0A1CC0094AA14 /* Zip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 39E259791ED0A1CC0094AA14 /* Zip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		39E2597B1ED0A1F90094AA14 /* Zip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39E259791ED0A1CC0094AA14 /* Zip.framework */; };
 		39E2597E1ED0D3870094AA14 /* ModalViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2597D1ED0D3870094AA14 /* ModalViewControllerDelegate.swift */; };
+		39E259801ED1CA980094AA14 /* TrainedImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39E2597F1ED1CA980094AA14 /* TrainedImagesVC.swift */; };
 		39F343291ECE33A900209B0C /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F343281ECE33A900209B0C /* Extensions.swift */; };
 		39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */; };
 		39F343301ECECD4100209B0C /* TrainingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */; };
@@ -67,6 +69,7 @@
 /* Begin PBXFileReference section */
 		39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewCVC.swift; sourceTree = "<group>"; };
 		39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallertImageCell.swift; sourceTree = "<group>"; };
+		396A24131ED54A240077671B /* TrainedImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainedImagesCell.swift; sourceTree = "<group>"; };
 		399744AC1EC453A0006BF20A /* WhatsThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399744AF1EC453A0006BF20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		399744B11EC453A0006BF20A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		399744E61EC46E23006BF20A /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = "<group>"; };
 		39E259791ED0A1CC0094AA14 /* Zip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Zip.framework; path = Carthage/Build/iOS/Zip.framework; sourceTree = "<group>"; };
 		39E2597D1ED0D3870094AA14 /* ModalViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalViewControllerDelegate.swift; sourceTree = "<group>"; };
+		39E2597F1ED1CA980094AA14 /* TrainedImagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainedImagesVC.swift; sourceTree = "<group>"; };
 		39F343281ECE33A900209B0C /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingImagesVC.swift; sourceTree = "<group>"; };
 		39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewCell.swift; sourceTree = "<group>"; };
@@ -208,6 +212,7 @@
 				399744B11EC453A0006BF20A /* ViewController.swift */,
 				39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */,
 				39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */,
+				39E2597F1ED1CA980094AA14 /* TrainedImagesVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -217,6 +222,7 @@
 			children = (
 				39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */,
 				39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */,
+				396A24131ED54A240077671B /* TrainedImagesCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -369,6 +375,8 @@
 			files = (
 				39F343301ECECD4100209B0C /* TrainingViewCell.swift in Sources */,
 				39F3432E1ECEA57800209B0C /* TrainingImagesVC.swift in Sources */,
+				396A24141ED54A240077671B /* TrainedImagesCell.swift in Sources */,
+				39E259801ED1CA980094AA14 /* TrainedImagesVC.swift in Sources */,
 				39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */,
 				39F343291ECE33A900209B0C /* Extensions.swift in Sources */,
 				399744B21EC453A0006BF20A /* ViewController.swift in Sources */,
