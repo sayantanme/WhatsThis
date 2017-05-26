@@ -1,0 +1,6 @@
+framework module Pods_WhatsThisTests {
+  umbrella header "Pods-WhatsThisTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
