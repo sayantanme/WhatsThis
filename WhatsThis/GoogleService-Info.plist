@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AD_UNIT_ID_FOR_BANNER_TEST</key>
+	<string>ca-app-pub-3940256099942544/2934735716</string>
+	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
+	<string>ca-app-pub-3940256099942544/4411468910</string>
+	<key>CLIENT_ID</key>
+	<string>462827355973-c8jj4e7gtb08pcpo7mktf27n8t5cpfu0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.462827355973-c8jj4e7gtb08pcpo7mktf27n8t5cpfu0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBQIHlJOay1QM-i9pxHC2WEKVhMW6CQBy0</string>
+	<key>GCM_SENDER_ID</key>
+	<string>462827355973</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.sayantanchakraborty.WhatsThis</string>
+	<key>PROJECT_ID</key>
+	<string>whatsthis-c7682</string>
+	<key>STORAGE_BUCKET</key>
+	<string>whatsthis-c7682.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<true/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<false/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:462827355973:ios:0eddd65d8c907197</string>
+	<key>DATABASE_URL</key>
+	<string>https://whatsthis-c7682.firebaseio.com</string>
+</dict>
+</plist>

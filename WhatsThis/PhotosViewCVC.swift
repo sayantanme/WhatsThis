@@ -9,6 +9,8 @@
 import UIKit
 import Photos
 import CoreData
+import FirebaseStorage
+import FirebaseDatabase
 
 private let reuseIdentifier = "Cell"
 
@@ -24,6 +26,10 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
     var inPositiveSelectionMode = true
     var trainingName: String?
     var fileNameDict = Dictionary<String, URL>()
+    var indicator: UIActivityIndicatorView?
+    var fireBasePosUpPath:String?
+    var fireBaseNegUpPath:String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +54,12 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
         }else if photos == .authorized {
             fetchGalleryPhotos()
         }
+        
+        indicator = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+        indicator?.frame = CGRect(x: 0.0, y: 0.0, width: 40.0, height: 40.0)
+        indicator?.center = view.center
+        view.addSubview(indicator!)
+        indicator?.bringSubview(toFront: view)
         
     }
 
@@ -180,7 +192,9 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
             fileNameDict["negativePath"] = zipPath
         }
         if fileNameDict.count == 2 {
-            saveData()
+            indicator?.startAnimating()
+            uploadToFireBaseAndSaveUrl()
+            //saveData()
         }
         self.navigationItem.title = "Select Negative Examples"
         inPositiveSelectionMode = false
@@ -189,15 +203,73 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
             selectedPositiveAssetsIdentifier.append(asset.localIdentifier)
         }
         
-        if fileNameDict.count == 2 {
-            self.navigationController?.popViewController(animated: true)
-        }else{
+        if fileNameDict.count != 2 {
             self.collectionView?.reloadData()
         }
     }
     
+    
+    //MARK: FireBase
+    
+    func uploadToFireBaseAndSaveUrl(){
+        
+        let positivePath = "\((fileNameDict["positivePath"]?.absoluteString)!).zip"
+        let negativePath = "\((fileNameDict["negativePath"]?.absoluteString)!).zip"
+        let positiveUrl = URL(string: positivePath)
+        let negativeUrl = URL(string: negativePath)
+        
+        let positiveZipRef = FIRStorage.storage().reference().child("zips/\(trainingName!)_PositiveExamples.zip")
+        let negativeZipRef = FIRStorage.storage().reference().child("zips/\(trainingName!)_NegativeExamples.zip")
+        
+        let posUploadtask = positiveZipRef.putFile(positiveUrl!, metadata: nil) { (metadata, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            }else{
+                let downloadUrl = metadata!.downloadURL()
+                print(downloadUrl!)
+            }
+        }
+        
+        let negUploadtask = negativeZipRef.putFile(negativeUrl!, metadata: nil) { (metadata, error) in
+            if let error = error{
+                print(error.localizedDescription)
+            }else{
+                let downloadUrl = metadata!.downloadURL()
+                print(downloadUrl!)
+            }
+        }
+        
+        _ = posUploadtask.observe(.success) { (snap) in
+            print(snap)
+            self.fireBasePosUpPath = snap.metadata?.downloadURL()?.absoluteString
+            self.checkifUploadDoneAndUpdateDb()
+        }
+        
+        _ = negUploadtask.observe(.success, handler: { (snap) in
+            print(snap)
+            self.fireBaseNegUpPath = snap.metadata?.downloadURL()?.absoluteString
+            self.checkifUploadDoneAndUpdateDb()
+            
+        })
+        
+        
+    }
+    
+    func checkifUploadDoneAndUpdateDb(){
+        print("check")
+        if self.fireBasePosUpPath != nil && self.fireBaseNegUpPath != nil {
+            self.saveData(posUpPath: self.fireBasePosUpPath!, negUpPath: self.fireBaseNegUpPath!)
+            
+            DispatchQueue.main.async {
+                self.indicator?.stopAnimating()
+                self.navigationController?.popViewController(animated: true)
+                
+            }
+        }
+    }
+    
     //MARK: CoreData
-    fileprivate func saveData(){
+    fileprivate func saveData(posUpPath:String, negUpPath:String){
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else{
             return
         }
@@ -207,10 +279,9 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
         let entity = NSEntityDescription.entity(forEntityName: "Training_Data", in: managedContext)
         let tainData = NSManagedObject(entity: entity!, insertInto: managedContext)
         tainData.setValue(trainingName, forKey: "name")
-        tainData.setValue(fileNameDict["positivePath"]?.absoluteString, forKey: "positivePath")
-        tainData.setValue(fileNameDict["negativePath"]?.absoluteString, forKey: "negativePath")
+        tainData.setValue(posUpPath, forKey: "positivePath")
+        tainData.setValue(negUpPath, forKey: "negativePath")
         tainData.setValue(false, forKey: "isTrained")
-        
         do {
             try managedContext.save()
         } catch let error as NSError {

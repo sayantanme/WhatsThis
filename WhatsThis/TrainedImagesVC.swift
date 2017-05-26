@@ -91,6 +91,9 @@ class TrainedImagesVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         cell?.txtTrainedName.text = product.value(forKeyPath: "name") as? String
         cell?.btnTrain.tag = indexPath.row
         cell?.btnTrain.addTarget(self, action: #selector(trainWatson(_:)), for: .touchUpInside)
+//        if product.get {
+//            <#code#>
+//        }
         if product.value(forKey: "isTrained") as! Bool {
             cell?.btnTrain.layer.cornerRadius = 10.0
             cell?.btnTrain.layer.masksToBounds = true
