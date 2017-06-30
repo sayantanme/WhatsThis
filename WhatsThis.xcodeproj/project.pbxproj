@@ -11,8 +11,9 @@
 		39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */; };
 		39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */; };
 		396A24141ED54A240077671B /* TrainedImagesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 396A24131ED54A240077671B /* TrainedImagesCell.swift */; };
+		398BA8C41F04D19000B5098C /* ClassificationsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398BA8C31F04D19000B5098C /* ClassificationsViewCell.swift */; };
 		399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744AF1EC453A0006BF20A /* AppDelegate.swift */; };
-		399744B21EC453A0006BF20A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744B11EC453A0006BF20A /* ViewController.swift */; };
+		399744B21EC453A0006BF20A /* AskWatsonVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399744B11EC453A0006BF20A /* AskWatsonVC.swift */; };
 		399744B51EC453A0006BF20A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 399744B31EC453A0006BF20A /* Main.storyboard */; };
 		399744B81EC453A0006BF20A /* WhatsThis.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 399744B61EC453A0006BF20A /* WhatsThis.xcdatamodeld */; };
 		399744BA1EC453A0006BF20A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 399744B91EC453A0006BF20A /* Assets.xcassets */; };
@@ -78,9 +79,10 @@
 		39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotosViewCVC.swift; sourceTree = "<group>"; };
 		39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GallertImageCell.swift; sourceTree = "<group>"; };
 		396A24131ED54A240077671B /* TrainedImagesCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainedImagesCell.swift; sourceTree = "<group>"; };
+		398BA8C31F04D19000B5098C /* ClassificationsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClassificationsViewCell.swift; sourceTree = "<group>"; };
 		399744AC1EC453A0006BF20A /* WhatsThis.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatsThis.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		399744AF1EC453A0006BF20A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		399744B11EC453A0006BF20A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		399744B11EC453A0006BF20A /* AskWatsonVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskWatsonVC.swift; sourceTree = "<group>"; };
 		399744B41EC453A0006BF20A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		399744B71EC453A0006BF20A /* WhatsThis.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WhatsThis.xcdatamodel; sourceTree = "<group>"; };
 		399744B91EC453A0006BF20A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -185,7 +187,6 @@
 				39F3432C1ECE340400209B0C /* Models */,
 				39F3432B1ECE33DF00209B0C /* Views */,
 				39F3432A1ECE33C100209B0C /* ViewControllers */,
-				39F343271ECE335B00209B0C /* Helpers */,
 				399744AF1EC453A0006BF20A /* AppDelegate.swift */,
 				399744B31EC453A0006BF20A /* Main.storyboard */,
 				399744B91EC453A0006BF20A /* Assets.xcassets */,
@@ -247,10 +248,11 @@
 		39F3432A1ECE33C100209B0C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				399744B11EC453A0006BF20A /* ViewController.swift */,
+				399744B11EC453A0006BF20A /* AskWatsonVC.swift */,
 				39019F151ECB026000DBA9F4 /* PhotosViewCVC.swift */,
-				39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */,
 				39E2597F1ED1CA980094AA14 /* TrainedImagesVC.swift */,
+				39F3432D1ECEA57800209B0C /* TrainingImagesVC.swift */,
+				39F343271ECE335B00209B0C /* Helpers */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -261,6 +263,7 @@
 				39019F171ECC52D800DBA9F4 /* GallertImageCell.swift */,
 				39F3432F1ECECD4100209B0C /* TrainingViewCell.swift */,
 				396A24131ED54A240077671B /* TrainedImagesCell.swift */,
+				398BA8C31F04D19000B5098C /* ClassificationsViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -565,7 +568,8 @@
 				39E259801ED1CA980094AA14 /* TrainedImagesVC.swift in Sources */,
 				39019F181ECC52D800DBA9F4 /* GallertImageCell.swift in Sources */,
 				39F343291ECE33A900209B0C /* Extensions.swift in Sources */,
-				399744B21EC453A0006BF20A /* ViewController.swift in Sources */,
+				398BA8C41F04D19000B5098C /* ClassificationsViewCell.swift in Sources */,
+				399744B21EC453A0006BF20A /* AskWatsonVC.swift in Sources */,
 				399744B01EC453A0006BF20A /* AppDelegate.swift in Sources */,
 				39A02F7E1ED5A98100961E20 /* VisualRecog.swift in Sources */,
 				39019F161ECB026000DBA9F4 /* PhotosViewCVC.swift in Sources */,

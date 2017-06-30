@@ -12,6 +12,7 @@ class TrainedImagesCell: UITableViewCell {
 
     @IBOutlet weak var txtTrainedName: UITextView!
     @IBOutlet weak var btnTrain: UIButton!
+    @IBOutlet weak var btnCheckStatus: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

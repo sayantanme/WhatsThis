@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="12141" systemVersion="16D32" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Training_Data" representedClassName="Training_Data" syncable="YES" codeGenerationType="class">
+        <attribute name="classifierID" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="isTrained" optional="YES" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="negativePath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="positivePath" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Training_Data" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Training_Data" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

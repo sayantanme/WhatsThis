@@ -35,6 +35,10 @@ class TrainedImagesVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func askWatson(_ sender: UIButton) {
+        
+        self.performSegue(withIdentifier: "AskWatson", sender: self)
+    }
     @IBAction func trainWatsonTapped(_ sender: UIButton) {
         print("trainWatson")
         let alertC = UIAlertController(title: "What do you want to train?", message: "Enter Name", preferredStyle: .alert)
@@ -94,6 +98,14 @@ class TrainedImagesVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
 //        if product.get {
 //            <#code#>
 //        }
+        
+        cell?.btnCheckStatus.layer.cornerRadius = 10.0
+        cell?.btnCheckStatus.layer.masksToBounds = true
+        cell?.btnCheckStatus.layer.borderWidth = 1.0
+        cell?.btnCheckStatus.tag = indexPath.row
+        cell?.btnCheckStatus.layer.borderColor = UIColor.red.cgColor
+        cell?.btnCheckStatus.addTarget(self, action: #selector(checkStatus(_:)), for: .touchUpInside)
+        
         if product.value(forKey: "isTrained") as! Bool {
             cell?.btnTrain.layer.cornerRadius = 10.0
             cell?.btnTrain.layer.masksToBounds = true
@@ -108,11 +120,35 @@ class TrainedImagesVC: UIViewController,UITableViewDelegate,UITableViewDataSourc
         }
         return cell!
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete hit")
+        }
+    }
+    
+    
+    //MARK: - Watson actions
 
     func trainWatson(_ sender: UIButton){
         let trainedItem = trainedItems[sender.tag]
+        let visReg = VisualRecog()
+        let posUrl = URL(string: trainedItem.value(forKey: "positivePath") as! String)
+        let negUrl = URL(string: trainedItem.value(forKey: "negativePath") as! String)
+        let classifierName = trainedItem.value(forKey: "name") as! String
+        
+        visReg.doVisualRecog(positiveUrl: posUrl, negativeUrl: negUrl, classifierName: classifierName)
         print("\(sender.tag) - \(trainedItem.value(forKey: "positivePath")!):\(trainedItem.value(forKey: "negativePath")!)")
         //print(sender.tag)
+    }
+    
+    
+    func checkStatus(_ sender: UIButton){
+        let trainedItem = trainedItems[sender.tag]
+        let visReg = VisualRecog()
+        let classifierName = trainedItem.value(forKey: "name") as! String
+        visReg.getClassifierStatus(classifierName: classifierName)
+        
     }
     
     // MARK: - Navigation
