@@ -218,10 +218,10 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
         let positiveUrl = URL(string: positivePath)
         let negativeUrl = URL(string: negativePath)
         
-        let positiveZipRef = FIRStorage.storage().reference().child("zips/\(trainingName!)_PositiveExamples.zip")
-        let negativeZipRef = FIRStorage.storage().reference().child("zips/\(trainingName!)_NegativeExamples.zip")
+        let positiveZipRef = Storage.storage().reference().child("zips/\(trainingName!)_PositiveExamples.zip")
+        let negativeZipRef = Storage.storage().reference().child("zips/\(trainingName!)_NegativeExamples.zip")
         
-        let posUploadtask = positiveZipRef.putFile(positiveUrl!, metadata: nil) { (metadata, error) in
+        let posUploadtask = positiveZipRef.putFile(from: positiveUrl!, metadata: nil) { (metadata, error) in
             if let error = error{
                 print(error.localizedDescription)
             }else{
@@ -230,7 +230,7 @@ class PhotosViewCVC: UICollectionViewController,UICollectionViewDelegateFlowLayo
             }
         }
         
-        let negUploadtask = negativeZipRef.putFile(negativeUrl!, metadata: nil) { (metadata, error) in
+        let negUploadtask = negativeZipRef.putFile(from: negativeUrl!, metadata: nil) { (metadata, error) in
             if let error = error{
                 print(error.localizedDescription)
             }else{

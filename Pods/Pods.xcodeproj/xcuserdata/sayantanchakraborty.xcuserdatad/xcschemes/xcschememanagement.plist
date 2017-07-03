@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>PKHUD.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-WhatsThis.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -37,12 +42,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2BF88E73538C9880B3C0161425171BEE</key>
+		<key>7AA53F23E41705E171F110FF3BF579F1</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7AA53F23E41705E171F110FF3BF579F1</key>
+		<key>B815E26CBE0190E73F70F33B933DBB75</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -53,6 +58,11 @@
 			<true/>
 		</dict>
 		<key>D79B2E35873D1FF11875C5345C958839</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D7A75F149082140741FC1E0B5B2863C8</key>
 		<dict>
 			<key>primary</key>
 			<true/>

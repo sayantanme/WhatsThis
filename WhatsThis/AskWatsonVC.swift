@@ -64,9 +64,10 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
         if let photo = photo{
             let uploadFirbasepath = "\(imageName)/\(NSDate.timeIntervalSinceReferenceDate)"
             let data = UIImageJPEGRepresentation(photo, 0.1)
-            let metadata = FIRStorageMetadata()
+            let metadata = StorageMetadata()
             metadata.contentType = "image/jpg"
-            FIRStorage.storage().reference().child("watson-images").child(uploadFirbasepath).put(data!, metadata: metadata) { (downMeta, error:Error?) in
+            
+            Storage.storage().reference().child("watson-images").child(uploadFirbasepath).putData(data!, metadata: metadata, completion: { (downMeta, error) in
                 guard error == nil else{
                     print(error?.localizedDescription ?? "no error desc")
                     return
@@ -78,8 +79,23 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
                         self.imgViewSelected.loadImageFromImageUrlFromCache(url: fileUrl)
                     }
                 }
-                
-            }
+            })
+            
+            
+//            Storage.storage().reference().child("watson-images").child(uploadFirbasepath).put(data!, metadata: metadata) { (downMeta, error:Error?) in
+//                guard error == nil else{
+//                    print(error?.localizedDescription ?? "no error desc")
+//                    return
+//                }
+//                if let fileUrl = downMeta?.downloadURLs?[0].absoluteString {
+//                    self.uploadedFileUrl = fileUrl
+//                    self.uploadedPhoto = photo
+//                    DispatchQueue.main.async {
+//                        self.imgViewSelected.loadImageFromImageUrlFromCache(url: fileUrl)
+//                    }
+//                }
+//                
+//            }
             
         }
     }
@@ -119,6 +135,10 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ClassificationsViewCell
         let classifications = classificationResults[indexPath.row]
         //        cell.imageSelected.isHidden = true
+        cell.txtClassification.layer.cornerRadius = 5.0
+        cell.txtClassification.layer.borderColor = UIColor.black.cgColor
+        cell.txtClassification.layer.borderWidth = 2.0
+        cell.txtClassification.layer.backgroundColor = UIColor.red.cgColor
         cell.txtClassification.text = classifications.classification
         return cell
     }
