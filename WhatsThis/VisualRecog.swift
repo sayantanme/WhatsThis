@@ -93,14 +93,13 @@ class VisualRecog {
         formatter.dateFormat = "yyyy-MM-dd"
         let version = formatter.string(from: date)
         let visualRecog = VisualRecognition(apiKey: apiKey, version: version)
-        visualRecog.classify(image: url, owners: ["me"], classifierIDs:["watsson_2036985945"], threshold: 0.0, language: "en", failure: { (error) in
-            print(error.localizedDescription)
-        }) { (classifiedImages) in
-            print(classifiedImages.images)
-        }
+//        visualRecog.classify(image: url, owners: ["me"], classifierIDs:["watsson_2036985945"], threshold: 0.0, language: "en", failure: { (error) in
+//            print(error.localizedDescription)
+//        }) { (classifiedImages) in
+//            print(classifiedImages.images)
+//        }
         
         visualRecog.classify(image: url) { (classifiedImages) in
-//            print(classifiedImages.images.first?.classifiers)
             onComplete((classifiedImages.images.first?.classifiers)!)
         }
     }

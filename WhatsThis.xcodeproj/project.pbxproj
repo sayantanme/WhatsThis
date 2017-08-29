@@ -354,7 +354,7 @@
 				TargetAttributes = {
 					399744AB1EC453A0006BF20A = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = YT5L554J64;
+						DevelopmentTeam = 9DDPTP86JE;
 						ProvisioningStyle = Automatic;
 					};
 					399744C21EC453A0006BF20A = {
@@ -729,7 +729,7 @@
 			baseConfigurationReference = 137F927B3ACF5BE854FD0FF1 /* Pods-WhatsThis.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YT5L554J64;
+				DEVELOPMENT_TEAM = 9DDPTP86JE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -747,7 +747,7 @@
 			baseConfigurationReference = 6107B50CBCDFF1476FA43BE5 /* Pods-WhatsThis.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YT5L554J64;
+				DEVELOPMENT_TEAM = 9DDPTP86JE;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",

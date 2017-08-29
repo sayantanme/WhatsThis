@@ -12,6 +12,7 @@ import VisualRecognitionV3
 import FirebaseAuth
 import FirebaseStorage
 import Photos
+import PKHUD
 
 private let reuseIdentifier = "classificationsViewCell"
 class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
@@ -22,6 +23,7 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
     var uploadedFileUrl: String? = nil
     var uploadedPhoto: UIImage? = nil
     var classificationResults = [Classification]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -50,12 +52,16 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
     
     @IBAction func btnWatson(_ sender: UIBarButtonItem) {
         let recog = VisualRecog()
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        HUD.show(.progress)
         DispatchQueue.global(qos: .userInitiated).async {
             recog.getImageDetailsbyClassifiers(url: self.uploadedFileUrl!, image: self.uploadedPhoto!){classifiedResults in
                 //print(classifiedResults.count)
                 DispatchQueue.main.async {
                     self.classificationResults = (classifiedResults.first?.classes)!
                     self.collectionViewClassifications.reloadData()
+                    HUD.hide()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
             }
         }
@@ -66,7 +72,7 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
             let data = UIImageJPEGRepresentation(photo, 0.1)
             let metadata = StorageMetadata()
             metadata.contentType = "image/jpg"
-            
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
             Storage.storage().reference().child("watson-images").child(uploadFirbasepath).putData(data!, metadata: metadata, completion: { (downMeta, error) in
                 guard error == nil else{
                     print(error?.localizedDescription ?? "no error desc")
@@ -80,39 +86,8 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
                     }
                 }
             })
-            
-            
-//            Storage.storage().reference().child("watson-images").child(uploadFirbasepath).put(data!, metadata: metadata) { (downMeta, error:Error?) in
-//                guard error == nil else{
-//                    print(error?.localizedDescription ?? "no error desc")
-//                    return
-//                }
-//                if let fileUrl = downMeta?.downloadURLs?[0].absoluteString {
-//                    self.uploadedFileUrl = fileUrl
-//                    self.uploadedPhoto = photo
-//                    DispatchQueue.main.async {
-//                        self.imgViewSelected.loadImageFromImageUrlFromCache(url: fileUrl)
-//                    }
-//                }
-//                
-//            }
-            
         }
     }
-    
-//    fileprivate func setupLabelsWithClassifiers(classResults: [Classification]){
-//        print(classResults.count)
-//        DispatchQueue.main.async {
-//            self.noTags = classResults.count
-//            for classes in classResults{
-//                let detectedText = classes.classification
-//                let label = UILabel(frame: CGRect(x: 10, y: 0, width: self.imgViewSelected.frame.width-10, height: 30))
-//                label.textColor = UIColor.black
-//                label.text = detectedText
-//                self.imgViewSelected.addSubview(label)
-//            }
-//        }
-//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -134,7 +109,6 @@ class AskWatsonVC: UIViewController,UICollectionViewDataSource,UICollectionViewD
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! ClassificationsViewCell
         let classifications = classificationResults[indexPath.row]
-        //        cell.imageSelected.isHidden = true
         cell.txtClassification.layer.cornerRadius = 5.0
         cell.txtClassification.layer.borderColor = UIColor.black.cgColor
         cell.txtClassification.layer.borderWidth = 2.0
@@ -159,6 +133,7 @@ extension AskWatsonVC: UIImagePickerControllerDelegate,UINavigationControllerDel
             selectedImagePicker = editedImage
         }else if let origImage = info[UIImagePickerControllerOriginalImage] as? UIImage{
             selectedImagePicker = origImage
+            //selectedImagePicker = UIImage(cgImage: origImage.cgImage!, scale: origImage.scale, orientation: .leftMirrored)
         }
         
         if let imageUrl = info[UIImagePickerControllerReferenceURL] as? URL {

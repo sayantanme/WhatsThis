@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PKHUD
 let imageCache = NSCache<AnyObject, AnyObject>()
 
 extension UIImageView {
@@ -23,6 +24,7 @@ extension UIImageView {
     func loadImageFromImageUrlFromCache(url:String){
         
         self.image = nil
+        HUD.flash(.progress)
         if let cachedImage = imageCache.object(forKey: url as AnyObject) as? UIImage{
             self.image = cachedImage
             return
@@ -40,6 +42,8 @@ extension UIImageView {
                     imageCache.setObject(downloadImage, forKey: url as AnyObject)
                     self.image = downloadImage
                 }
+                HUD.hide()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
         }
         task.resume()
